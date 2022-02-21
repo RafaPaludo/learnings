@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    
+    const Cart = () => {
+      // useState é um Hook que define variável reativa
+      const [count, setCount] = React.useState(0);
+
+      return (
+        <div>
+          <button onClick={() => setCount(count + 1)}>Comprar: {count}</button>
+          <p>Total: {count}</p>
+          <p>RS {count * 100}</p>
+        </div>
+      );
+    };
+
+    const Button = () => {
+      function handleClick(event) {
+        alert(event.target.innerText)
+      }
+
+      return <button onClick={handleClick}>Click me</button>
+    }
+
+    const Title = () => {
+      const url = window.location.href;
+      return (
+        <h1>Título da página {url}</h1>
+      );
+    }
+
+    const App = () => {
+      return (
+        <div>
+          <Title />
+          <Cart />
+          <div>Meu App</div>
+          <Button />
+        </div>
+      );
+    };
+
+
+    ReactDOM.render(<App />, document.querySelector('#app'));
+  </script>
+</body>
+</html>
